@@ -9,13 +9,10 @@ import threading
 import signal
 
 TCP_HOST = "127.0.0.1"
-TCP_PORT = 5000   # MUST match Godot
 running = True
 explored_tiles = []
 goal_reached = False
 TILE_SIZE = 50
-
-
 
 def draw_tile_on_whiteboard(x, y):
 
@@ -38,7 +35,7 @@ def signal_handler(sig, frame):
 signal.signal(signal.SIGINT, signal_handler)
 
 
-def tcp_listening_thread():
+def tcp_listening_thread(TCP_PORT):
     global running
 
     print(f"THREAD: Démarrage écoute TCP sur {TCP_HOST}:{TCP_PORT}")
@@ -87,10 +84,9 @@ def input_callback(io_type, name, value_type, value, my_data):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 4:
+    if len(sys.argv) < 5:
         print("usage: python3 main.py agent_name network_device port")
         exit(0)
-
     igs.agent_set_name(sys.argv[1])
     igs.definition_set_class("MessageBroadcast")
     igs.log_set_console(True)
@@ -102,8 +98,9 @@ if __name__ == "__main__":
     igs.output_set_int("whiteboard_size", TILE_SIZE)
     #igs.start_with_device(sys.argv[2], int(sys.argv[3]))
     igs.start_with_ip(sys.argv[2], int(sys.argv[3]))
+    TCP_PORT = int(sys.argv[4])
 
-    t = threading.Thread(target=tcp_listening_thread(), daemon=True)
+    t = threading.Thread(target=tcp_listening_thread(TCP_PORT), daemon=True)
     t.start()
 
     print("Agent démarré. Appuyez sur Ctrl+C pour quitter.")
