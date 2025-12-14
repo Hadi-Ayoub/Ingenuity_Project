@@ -100,7 +100,8 @@ if __name__ == "__main__":
     igs.output_create("whiteboard_x", igs.INTEGER_T, None)
     igs.output_create("whiteboard_y", igs.INTEGER_T, None)
     igs.output_create("whiteboard_size", igs.INTEGER_T, None)
-    igs.start_with_ip("10.52.164.171", 5670)
+    #igs.start_with_device(sys.argv[2], sys.argv[3])
+    igs.start_with_ip("10.52.164.171", sys.argv[3])
 
     t = threading.Thread(target=tcp_listening_thread(), daemon=True)
     t.start()
