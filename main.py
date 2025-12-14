@@ -36,7 +36,7 @@ def signal_handler(sig, frame):
 signal.signal(signal.SIGINT, signal_handler)
 
 
-def tcp_listening_thread(TCP_PORT):
+def tcp_listening_thread():
     global running
 
     print(f"THREAD: Démarrage écoute TCP sur {TCP_HOST}:{TCP_PORT}")
@@ -100,7 +100,7 @@ if __name__ == "__main__":
     #igs.start_with_device(sys.argv[2], int(sys.argv[3]))
     igs.start_with_ip(sys.argv[2], int(sys.argv[3]))
 
-    t = threading.Thread(target=tcp_listening_thread(TCP_PORT), daemon=True)
+    t = threading.Thread(target=tcp_listening_thread(), daemon=True)
     t.start()
 
     print("Agent démarré. Appuyez sur Ctrl+C pour quitter.")
