@@ -8,22 +8,40 @@ const GoalScene = preload("res://Map/Goal.tscn")
 
 var cells: Array = []
 var goal: Node3D
+
 var goal_reached := false
+
+signal tile_explored(tile: Vector2i)
+var explored_tiles: Dictionary = {}
+
+var socket := StreamPeerTCP.new()
+var socket_connected := false
+
+
 
 @onready var player: Node3D = $Player
 
 func _process(_delta):
+	socket.poll()
+
+	if socket.get_status() == StreamPeerTCP.STATUS_CONNECTED:
+		socket_connected = true
+
+	check_tile_exploration()
+
 	if not goal_reached:
 		check_goal_reached()
+
 
 
 func check_goal_reached():
 	if goal_reached or not goal:
 		return
 
-	print(player.global_position.distance_to(goal.global_position))
+	#print(player.global_position.distance_to(goal.global_position))
 	if player.global_position.distance_to(goal.global_position) < 1.5:
 		goal_reached = true
+		send_to_python("GOAL_REACHED")
 		print("GOAL REACHED!")
 		
 
@@ -50,6 +68,10 @@ func _ready():
 	environment.ambient_light_color = Color("432d6d")
 
 	generate_map()
+	
+	socket.connect_to_host("127.0.0.1", 5000)
+	connect("tile_explored", Callable(self, "_on_tile_explored"))
+	print("Socket status:", socket.get_status())
 
 func generate_map():
 	if not Map is PackedScene:
@@ -89,3 +111,32 @@ func generate_map():
 
 
 	map.free()
+	
+	
+func get_player_tile() -> Vector2i:
+	return Vector2i(
+		floor(player.global_position.x / Globals.GRID_SIZE),
+		floor(player.global_position.z / Globals.GRID_SIZE)
+	)
+	
+func check_tile_exploration():
+	var tile := get_player_tile()
+
+	if explored_tiles.has(tile):
+		return  # already explored
+
+	explored_tiles[tile] = true
+	emit_signal("tile_explored", tile)
+	
+func _on_tile_explored(tile: Vector2i):
+	if not socket_connected:
+		return
+	
+	var msg := "%d,%d\n" % [tile.x, tile.y]
+	socket.put_data(msg.to_utf8_buffer())
+
+func send_to_python(message: String):
+	if not socket_connected:
+		return
+
+	socket.put_data((message + "\n").to_utf8_buffer())
