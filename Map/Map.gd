@@ -5,6 +5,7 @@ extends Node2D
 func get_tilemap() -> TileMapLayer:
 	return find_child("MapCreator")
 
+
 func get_goal_world_position(grid_size: float) -> Vector3:
 	# Convert 2D grid coordinates → 3D world coordinates
 	return Vector3(

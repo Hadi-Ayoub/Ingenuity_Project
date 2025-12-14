@@ -45,18 +45,19 @@ func check_goal_reached():
 		print("GOAL REACHED!")
 		
 
-func get_farthest_tile(tiles: Array[Vector2i]) -> Vector2i:
+func get_farthest_tile(tiles) -> Vector2i:
 	var start := Vector2i.ZERO
 	var farthest := start
 	var max_dist := -1.0
 
 	for tile in tiles:
-		var dist := tile.distance_to(start)
+		var dist :float = tile.distance_to(start)
 		if dist > max_dist:
 			max_dist = dist
 			farthest = tile
 
 	return farthest
+
 
 
 
@@ -73,44 +74,80 @@ func _ready():
 	connect("tile_explored", Callable(self, "_on_tile_explored"))
 	print("Socket status:", socket.get_status())
 
-func generate_map():
-	if not Map is PackedScene:
-		return
+func generate_map(map_width: int = 10, map_height: int = 10, tile_variants: int = 8):
+	cells.clear()
+	explored_tiles.clear()
 
-	# Instantiate 2D map OFF-SCENE (important!)
-	var map: Node2D = Map.instantiate()
+	# --- Step 1: Initialize empty map ---
+	var map := []
+	for y in range(map_height):
+		var row := []
+		for x in range(map_width):
+			row.append(-1)  # -1 = empty / no tile
+		map.append(row)
 
-	var tile_map: TileMapLayer = map.get_tilemap()
-	var used_tiles: Array[Vector2i] = tile_map.get_used_cells()
+	# --- Step 2: Create a connected path from start (0,0) to goal ---
+	var current = Vector2i(0,0)
+	var path := [current]
+	map[current.y][current.x] = randi() % tile_variants
 
-	# Spawn 3D cells
-	for tile in used_tiles:
-		var cell := Cell.instantiate()
-		add_child(cell)
-		cell.position = Vector3(
-			tile.x * Globals.GRID_SIZE,
-			0,
-			tile.y * Globals.GRID_SIZE
-		)
-		cells.append(cell)
+	while current != Vector2i(map_width-1, map_height-1):
+		var neighbors := []
+		# Right and Down neighbors only to ensure path reaches goal
+		if current.x + 1 < map_width:
+			neighbors.append(Vector2i(current.x+1, current.y))
+		if current.y + 1 < map_height:
+			neighbors.append(Vector2i(current.x, current.y+1))
+		
+		current = neighbors[randi() % neighbors.size()]
+		map[current.y][current.x] = randi() % tile_variants
+		path.append(current)
+
+	# --- Step 3: Optionally add extra random tiles adjacent to existing path ---
+	for tile in path:
+		var dirs = [Vector2i(1,0), Vector2i(-1,0), Vector2i(0,1), Vector2i(0,-1)]
+		for dir in dirs:
+			var nx = tile.x + dir.x
+			var ny = tile.y + dir.y
+			if nx >= 0 and nx < map_width and ny >= 0 and ny < map_height:
+				if map[ny][nx] == -1 and randi() % 3 == 0:
+					map[ny][nx] = randi() % tile_variants
+
+	# --- Step 4: Spawn 3D cells ---
+	for y in range(map_height):
+		for x in range(map_width):
+			if map[y][x] == -1:
+				continue
+			var cell := Cell.instantiate()
+			add_child(cell)
+			cell.position = Vector3(
+				x * Globals.GRID_SIZE,
+				0,
+				y * Globals.GRID_SIZE
+			)
+			cells.append(cell)
+
+	# Update faces for all cells
+	var used_tiles := []
+	for y in range(map_height):
+		for x in range(map_width):
+			if map[y][x] != -1:
+				used_tiles.append(Vector2i(x, y))
 
 	for cell in cells:
 		cell.update_faces(used_tiles)
 
-	# Find goal tile at end of map
+	# --- Step 5: Place the goal at farthest tile ---
 	var end_tile := get_farthest_tile(used_tiles)
-
-	# Spawn goal
 	goal = GoalScene.instantiate()
 	add_child(goal)
 	goal.position = Vector3(
 		end_tile.x * Globals.GRID_SIZE,
 		1,
 		end_tile.y * Globals.GRID_SIZE
-)
+	)
 
-
-	map.free()
+	print("Generated connected map with size %dx%d" % [map_width, map_height])
 	
 	
 func get_player_tile() -> Vector2i:
