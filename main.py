@@ -13,6 +13,7 @@ running = True
 explored_tiles = []
 goal_reached = False
 TILE_SIZE = 50
+TCP_PORT=5000
 
 def draw_tile_on_whiteboard(x, y):
 
@@ -98,7 +99,6 @@ if __name__ == "__main__":
     igs.output_set_int("whiteboard_size", TILE_SIZE)
     #igs.start_with_device(sys.argv[2], int(sys.argv[3]))
     igs.start_with_ip(sys.argv[2], int(sys.argv[3]))
-    TCP_PORT = int(sys.argv[4])
 
     t = threading.Thread(target=tcp_listening_thread(TCP_PORT), daemon=True)
     t.start()
