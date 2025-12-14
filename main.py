@@ -13,21 +13,20 @@ TCP_PORT = 5000   # MUST match Godot
 running = True
 explored_tiles = []
 goal_reached = False
+TILE_SIZE = 50
 
 
 
 def draw_tile_on_whiteboard(x, y):
-    TILE_SIZE = 50
 
     screen_x = (x+1) *TILE_SIZE+10
     screen_y = (y+1) * TILE_SIZE+10
     print("screen_x = ", screen_x)
     print("screen_y = ", screen_y)
 
-    igs.output_set_impulsion("whiteboard_impulse")
     igs.output_set_int("whiteboard_x", screen_x)
     igs.output_set_int("whiteboard_y", screen_y)
-    igs.output_set_int("whiteboard_size", TILE_SIZE)
+    igs.output_set_impulsion("whiteboard_impulse")
 
 
 def signal_handler(sig, frame):
@@ -100,8 +99,9 @@ if __name__ == "__main__":
     igs.output_create("whiteboard_x", igs.INTEGER_T, None)
     igs.output_create("whiteboard_y", igs.INTEGER_T, None)
     igs.output_create("whiteboard_size", igs.INTEGER_T, None)
-    #igs.start_with_device(sys.argv[2], sys.argv[3])
-    igs.start_with_ip("10.52.164.171", sys.argv[3])
+    igs.output_set_int("whiteboard_size", TILE_SIZE)
+    #igs.start_with_device(sys.argv[2], int(sys.argv[3]))
+    igs.start_with_ip("10.52.164.171", int(sys.argv[3]))
 
     t = threading.Thread(target=tcp_listening_thread(), daemon=True)
     t.start()
