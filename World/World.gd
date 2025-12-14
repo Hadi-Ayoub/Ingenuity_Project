@@ -73,6 +73,44 @@ func _ready():
 	socket.connect_to_host("127.0.0.1", 5000)
 	connect("tile_explored", Callable(self, "_on_tile_explored"))
 	print("Socket status:", socket.get_status())
+	
+	
+	
+func generate_map_static():
+	if not Map is PackedScene:
+		return
+
+	# Instantiate 2D map OFF-SCENE (important!)
+	var map: Node2D = Map.instantiate()
+
+	var tile_map: TileMapLayer = map.get_tilemap()
+	var used_tiles: Array[Vector2i] = tile_map.get_used_cells()
+
+	# Spawn 3D cells
+	for tile in used_tiles:
+		var cell := Cell.instantiate()
+		add_child(cell)
+		cell.position = Vector3(
+			tile.x * Globals.GRID_SIZE,
+			0,
+			tile.y * Globals.GRID_SIZE
+		)
+		cells.append(cell)
+
+	for cell in cells:
+		cell.update_faces(used_tiles)
+
+	# Find goal tile at end of map
+	var end_tile := get_farthest_tile(used_tiles)
+
+	# Spawn goal
+	goal = GoalScene.instantiate()
+	add_child(goal)
+	goal.position = Vector3(
+		end_tile.x * Globals.GRID_SIZE,
+		1,
+		end_tile.y * Globals.GRID_SIZE
+)
 
 func generate_map(map_width: int = 10, map_height: int = 10, tile_variants: int = 8):
 	cells.clear()

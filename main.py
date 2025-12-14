@@ -101,7 +101,7 @@ if __name__ == "__main__":
     igs.output_create("whiteboard_size", igs.INTEGER_T, None)
     igs.output_set_int("whiteboard_size", TILE_SIZE)
     #igs.start_with_device(sys.argv[2], int(sys.argv[3]))
-    igs.start_with_ip("10.52.164.171", int(sys.argv[3]))
+    igs.start_with_ip("10.192.27.250", int(sys.argv[3]))
 
     t = threading.Thread(target=tcp_listening_thread(), daemon=True)
     t.start()
