@@ -115,8 +115,8 @@ func generate_map():
 	
 func get_player_tile() -> Vector2i:
 	return Vector2i(
-		floor(player.global_position.x / Globals.GRID_SIZE),
-		floor(player.global_position.z / Globals.GRID_SIZE)
+		floor(player.global_position.z / Globals.GRID_SIZE), # map X
+		floor(player.global_position.x / Globals.GRID_SIZE)  # map Y
 	)
 	
 func check_tile_exploration():
@@ -134,6 +134,9 @@ func _on_tile_explored(tile: Vector2i):
 	
 	var msg := "%d,%d\n" % [tile.x, tile.y]
 	socket.put_data(msg.to_utf8_buffer())
+	print("Player pos:", player.global_position)
+	print("msg ", msg)
+
 
 func send_to_python(message: String):
 	if not socket_connected:

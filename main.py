@@ -11,9 +11,23 @@ import signal
 TCP_HOST = "127.0.0.1"
 TCP_PORT = 5000   # MUST match Godot
 running = True
-explored_tiles = set()
+explored_tiles = []
 goal_reached = False
 
+
+
+def draw_tile_on_whiteboard(x, y):
+    TILE_SIZE = 50
+
+    screen_x = (x+1) *TILE_SIZE+10
+    screen_y = (y+1) * TILE_SIZE+10
+    print("screen_x = ", screen_x)
+    print("screen_y = ", screen_y)
+
+    igs.output_set_impulsion("whiteboard_impulse")
+    igs.output_set_int("whiteboard_x", screen_x)
+    igs.output_set_int("whiteboard_y", screen_y)
+    igs.output_set_int("whiteboard_size", TILE_SIZE)
 
 
 def signal_handler(sig, frame):
@@ -54,7 +68,10 @@ def tcp_listening_thread():
                         igs.output_set_string("message_output", "GOAL_REACHED")
                     else:
                         x, y = map(int, line.split(","))
-                        explored_tiles.add((x, y))
+                        print("x = ", x)
+                        print("y = ", y)
+                        explored_tiles.append((x, y))
+                        draw_tile_on_whiteboard(x, y)
                         print(explored_tiles)
 
 
@@ -79,6 +96,10 @@ if __name__ == "__main__":
     igs.definition_set_class("MessageBroadcast")
     igs.log_set_console(True)
     igs.output_create("message_output", igs.STRING_T, None)
+    igs.output_create("whiteboard_impulse", igs.IMPULSION_T, None)
+    igs.output_create("whiteboard_x", igs.INTEGER_T, None)
+    igs.output_create("whiteboard_y", igs.INTEGER_T, None)
+    igs.output_create("whiteboard_size", igs.INTEGER_T, None)
     igs.start_with_ip("10.52.164.171", 5670)
 
     t = threading.Thread(target=tcp_listening_thread(), daemon=True)
