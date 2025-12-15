@@ -83,4 +83,4 @@ Aussi, nous n'avons pas pu rendre le port TCP modulaire, car nous ne savons pas 
 # Remerciment
 3d-dungeon-godot-4: https://github.com/NyanPanDev/3d-dungeon-godot-4.git
 
-Qui est elle-même un Fork de https://github.com/uheartbeast/3d-dungeon portée vers Godot 4.2
+Qui est elle-même un Fork de https://github.com/uheartbeast/3d-dungeon
