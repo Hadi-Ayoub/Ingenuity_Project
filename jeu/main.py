@@ -117,6 +117,8 @@ if __name__ == "__main__":
     igs.output_set_int("whiteboard_size", TILE_SIZE)
 
     print(f"Démarrage Ingescape sur l'IP {network_device}:{igs_port}")
+    #igs.start_with_device(network_device, igs_port) # impossible de se connecter meme en choisant le meme non que sur circle
+    # Par consequent, on utilise directement une IP
     igs.start_with_ip(network_device, igs_port)
     
 
