@@ -51,7 +51,7 @@ ZQSD:
 - Connecter ingescape circle à une interface réseau valide avec un numéro de port valide
 - Lancer le Whiteboard
 - Connecter le Whiteboard à la même interface réseau avec le même numéro de port que ingescape circle
-- Lancer le script Python main.py avec comme paramètres <NomAgent> <AdresseIP> <Port>
+- Lancer le script Python main.py avec comme paramètres \<NomAgent\> \<AdresseIP\> \<Port\>
 - Lancer l'exécutable 3D_Dungeon_RPG.exe si l'ordinateur est sous Windows ou 3D_Dungeon_RPG si l'ordinateur est sous Linux
 - Sélectionner la fenêtre Godot ouverte comme fenêtre active, vous pouvez à présent vous déplacer pour trouver l'objectif
 
