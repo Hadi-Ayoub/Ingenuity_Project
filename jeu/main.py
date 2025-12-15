@@ -106,9 +106,6 @@ if __name__ == "__main__":
     igs_port = int(sys.argv[3])
     
 
-    if len(sys.argv) >= 5:
-        TCP_PORT = int(sys.argv[4])
-
     igs.agent_set_name(agent_name)
     igs.definition_set_class("MessageBroadcast")
     igs.log_set_console(True)
