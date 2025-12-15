@@ -47,7 +47,7 @@ ZQSD:
 
 
 - Lancer pip install -r "requirements.txt"
-- Lancer le script ingescape ingenuity.igscript
+- Lancer le script ingescape ingenuity.igssystem
 - Connecter ingescape circle à une interface réseau valide avec un numéro de port valide
 - Lancer le Whiteboard
 - Connecter le Whiteboard à la même interface réseau avec le même numéro de port que ingescape circle
