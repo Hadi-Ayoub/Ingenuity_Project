@@ -1,6 +1,9 @@
 Branche principale: main
 
 # Projet
+
+<img width="3341" height="1380" alt="Capture d&#39;écran 2025-12-15 010705" src="https://github.com/user-attachments/assets/76e3e902-63cf-4fa1-ab9c-556cf7a35bae" />
+
 On a réalisé les fondations d'un dungeon crawler en 3D, en utilisant Godot comme outil supplémentaire.
 
 Le joueur peut se déplacer dans un donjon généré de manière aléatoire, il cherche le but. 
@@ -35,6 +38,8 @@ ZQSD:
 - La bibliothèque Python pour ingescape>=4 (se trouve dans requirements.txt)
 
 # Fonctionnement
+
+
 - Lancer pip install -r "requirements.txt"
 - Lancer le script ingescape ingenuity.igscript
 - Connecter ingescape circle à une interface réseau valide avec un numéro de port valide
