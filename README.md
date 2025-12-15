@@ -79,4 +79,4 @@ Il semble donc que le but était en dehors de la partie du donjon qui était att
 # Remerciment
 3d-dungeon-godot-4: https://github.com/NyanPanDev/3d-dungeon-godot-4.git
 
-Qui est elle-même un Fork de https://github.com/uheartbeast/3d-dungeon ported to Godot 4.2
+Qui est elle-même un Fork de https://github.com/uheartbeast/3d-dungeon portée vers Godot 4.2
