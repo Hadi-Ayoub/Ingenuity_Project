@@ -75,7 +75,7 @@ Le but n'était simplement pas atteignable, nous avions le nom de la node dans l
 
 Il semble donc que le but était en dehors de la partie du donjon qui était atteignable par joueur, ce qui nous a poussé à changer de bibliothèque.
 
-Aussi, nous n'avons pas pu rendre le port TCP modulaire, car nous ne savons pas comment faire dans Godot, car nous l'avons utilisé pour la première fois dans le cadre de ce projet.
+Aussi, nous n'avons pas pu rendre le port TCP modulaire, car nous ne savons pas comment faire dans Godot, car nous avons utilisé Godot pour la première fois dans le cadre de ce projet.
 
 
 # Remerciment
