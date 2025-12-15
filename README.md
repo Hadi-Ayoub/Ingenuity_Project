@@ -1,6 +1,13 @@
 Branche principale: main
 
 # Projet
+
+
+
+<img width="3341" height="1380" alt="Capture d&#39;écran 2025-12-15 010705" src="https://github.com/user-attachments/assets/76e3e902-63cf-4fa1-ab9c-556cf7a35bae" />
+
+
+
 On a réalisé les fondations d'un dungeon crawler en 3D, en utilisant Godot comme outil supplémentaire.
 
 Le joueur peut se déplacer dans un donjon généré de manière aléatoire, il cherche le but. 
@@ -35,17 +42,19 @@ ZQSD:
 - La bibliothèque Python pour ingescape>=4 (se trouve dans requirements.txt)
 
 # Fonctionnement
+
+
 - Lancer pip install -r "requirements.txt"
 - Lancer le script ingescape ingenuity.igscript
 - Connecter ingescape circle à une interface réseau valide avec un numéro de port valide
 - Lancer le Whiteboard
 - Connecter le Whiteboard à la même interface réseau avec le même numéro de port que ingescape circle
-- Lancer le script Python main.py avec comme paramètres <NomAgent> <NomInterfaceReseau> <Port>
+- Lancer le script Python main.py avec comme paramètres <NomAgent> <AdresseIP> <Port>
 - Lancer l'exécutable 3D_Dungeon_RPG.exe si l'ordinateur est sous Windows ou 3D_Dungeon_RPG si l'ordinateur est sous Linux
 - Sélectionner la fenêtre Godot ouverte comme fenêtre active, vous pouvez à présent vous déplacer pour trouver l'objectif
 
 # Pour aller plus loin
-On a pensé à ajouter des coffres aux trésors et à ce que le contenu une fois ouvert s'affiche dans le chat du Whiteboard. 
+On a pensé à ajouter des coffres aux trésors et à ce que une fois ouvert le contenu s'affiche dans le chat du Whiteboard. 
 
 On a aussi envisagé un système de combat au tour par tour.
 
@@ -70,4 +79,4 @@ Il semble donc que le but était en dehors de la partie du donjon qui était att
 # Remerciment
 3d-dungeon-godot-4: https://github.com/NyanPanDev/3d-dungeon-godot-4.git
 
-Qui est elle-même un Fork de https://github.com/uheartbeast/3d-dungeon ported to Godot 4.2
+Qui est elle-même un Fork de https://github.com/uheartbeast/3d-dungeon portée vers Godot 4.2
