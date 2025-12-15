@@ -2,7 +2,9 @@ Branche principale: main
 
 # Projet
 On a réalisé les fondations d'un dungeon crawler en 3D, en utilisant Godot comme outil supplémentaire.
+
 Le joueur peut se déplacer dans un donjon généré de manière aléatoire, il cherche le but. 
+
 Lorsqu'il l'atteint, un message est affiché dans le chat du Whiteboard, et lorsqu'il explore des cases, celle-ci sont dessinées sur le Whiteboard pour former une carte.
 
 En se basant sur une bibliothèque déjà existante, on a ensuite randomisé la génération de carte, ajouté un but visible sur la carte en 3D, qui est placé le plus loin possible.
