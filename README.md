@@ -32,8 +32,8 @@ Flèches directionnelles:
 ZQSD:
 - Z: Avancer
 - S: Reculer
-- Q: Pas de côté à droite
-- E: Pas de côté à droite
+- Q: Pas de côté à gauche
+- D: Pas de côté à droite
 - E: Tourne la caméra à droite
 - A: Tourne la caméra à gauche
 
