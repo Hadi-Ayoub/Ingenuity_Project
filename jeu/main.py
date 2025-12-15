@@ -98,7 +98,7 @@ def input_callback(io_type, name, value_type, value, my_data):
 
 if __name__ == "__main__":
     if len(sys.argv) < 4:
-        print("usage: python3 main.py agent_name network_device ingescape_port [tcp_port]")
+        print("usage: python3 main.py agent_name network_device ingescape_port")
         exit(0)
 
     agent_name = sys.argv[1]
