@@ -54,7 +54,7 @@ ZQSD:
 - Sélectionner la fenêtre Godot ouverte comme fenêtre active, vous pouvez à présent vous déplacer pour trouver l'objectif
 
 # Pour aller plus loin
-On a pensé à ajouter des coffres aux trésors et à ce que le contenu une fois ouvert s'affiche dans le chat du Whiteboard. 
+On a pensé à ajouter des coffres aux trésors et à ce que une fois ouvert le contenu s'affiche dans le chat du Whiteboard. 
 
 On a aussi envisagé un système de combat au tour par tour.
 
