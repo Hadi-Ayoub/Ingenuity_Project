@@ -4,6 +4,8 @@ Branche principale: main
 
 Contient les exécutables Godot (Windows et Linux), ainsi que le code source de la partie du projet réalisée avec Godot.
 
+Contient le script .py de l'agent Python et le script ingescape.
+
 <img width="3341" height="1380" alt="Capture d&#39;écran 2025-12-15 010705" src="https://github.com/user-attachments/assets/76e3e902-63cf-4fa1-ab9c-556cf7a35bae" />
 
 
