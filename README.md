@@ -52,6 +52,7 @@ ZQSD:
 - Lancer le Whiteboard
 - Connecter le Whiteboard à la même interface réseau avec le même numéro de port que ingescape circle
 - Lancer le script Python main.py avec comme paramètres \<NomAgent\> \<AdresseIP\> \<Port\>
+  Pour obtenir l'adresse IP, on peut réaliser un ipconfig (pour Windows) ou ip a (pour Linux) et sélectionner l'adresse IP correspondant à l'interface réseau utilisée
 - Lancer l'exécutable 3D_Dungeon_RPG.exe (jeu/executables) si l'ordinateur est sous Windows ou 3D_Dungeon_RPG.sh (jeu/executables) si l'ordinateur est sous Linux
 - Sélectionner la fenêtre Godot ouverte comme fenêtre active, vous pouvez à présent vous déplacer pour trouver l'objectif
 
@@ -78,6 +79,10 @@ Le but n'était simplement pas atteignable, nous avions le nom de la node dans l
 Il semble donc que le but était en dehors de la partie du donjon qui était atteignable par joueur, ce qui nous a poussé à changer de bibliothèque.
 
 Aussi, nous n'avons pas pu rendre le port TCP modulaire, car nous ne savons pas comment faire dans Godot, car nous avons utilisé Godot pour la première fois dans le cadre de ce projet.
+
+Enfin Ingescape Circle ne marchait pas avec le réseau privé de l'un de nous deux, pour contourner ce problème, on a dû utilisé un partage de connexion.
+
+Même ainsi, ingescape.start_with_device n'arrivait pas à se connecter à l'interface utilisée par circle, ainsi on a passé directement l'adresse IP pour ingescape.start_with_ip. 
 
 
 # Remerciment
