@@ -61,7 +61,7 @@ On a aussi envisagé un système de combat au tour par tour.
 Enfin, on a également considéré de passer à un autre niveau une fois l'objectif atteint.
 
 # Difficultés rencontrées
-Au début du projet, on a utilisé une bibliothèque différente pour générer le donjon, car celle-ci s'occuper déjà de la génération aléatoire.
+Au début du projet, on a utilisé une bibliothèque différente pour générer le donjon, car celle-ci s'occupait déjà de la génération aléatoire.
 
 Cependant, lorsqu'on a voulu placer le but, on s'est rendu compte que la génération aléatoire générait des pièces qui n'étaient pas nécessairement connectées entre elles.
 
@@ -74,6 +74,8 @@ Même en tentant de choisir le point de départ correspondant au spawn du joueur
 Le but n'était simplement pas atteignable, nous avions le nom de la node dans lequel le but se trouvait, mais aucune idée d'où se trouvait la dite node, que nous n'arrivons jamais à trouver, même en explorant.
 
 Il semble donc que le but était en dehors de la partie du donjon qui était atteignable par joueur, ce qui nous a poussé à changer de bibliothèque.
+
+Aussi, nous n'avons pas pu rendre le port TCP modulaire, car nous ne savons pas comment faire dans Godot, car nous l'avons utilisé pour la première fois dans le cadre de ce projet.
 
 
 # Remerciment
