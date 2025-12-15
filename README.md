@@ -11,6 +11,7 @@ En se basant sur une bibliothèque déjà existante, on a ensuite randomisé la 
 De Godot, on a également transmis les coordonnées des cases visitées et indiquer quand le joueur atteint l'objectif à un agent Python (main.py) via TCP.
 
 Il nous a par ailleurs fallu réassigner les commandes (avance, recule, droite et gauche, tourner la caméra à gauche, tourner la caméra à droite), car les commandes étaient pour un clavier QWERTY.
+
 Afin de limiter la dépendance au type de clavier, on a deux dispositions de touches:
 
 Flèches directionnelles: 
@@ -45,16 +46,24 @@ ZQSD:
 
 # Pour aller plus loin
 On a pensé à ajouter des coffres aux trésors et à ce que le contenu une fois ouvert s'affiche dans le chat du Whiteboard. 
+
 On a aussi envisagé un système de combat au tour par tour.
+
 Enfin, on a également considéré de passer à un autre niveau une fois l'objectif atteint.
 
 # Difficultés rencontrées
 Au début du projet, on a utilisé une bibliothèque différente pour générer le donjon, car celle-ci s'occuper déjà de la génération aléatoire.
+
 Cependant, lorsqu'on a voulu placer le but, on s'est rendu compte que la génération aléatoire générait des pièces qui n'étaient pas nécessairement connectées entre elles.
+
 Ainsi, il était possible que le but soit inatteignable par le joueur.
+
 Choisir un but pour avoir un chemin valide s'est avéré impossible, car le spawn du joueur était choisi dans une liste de points de spawns de manière aléatoire.
+
 Même en tentant de choisir le point de départ correspondant au spawn du joueur et ensuite d'aller chercher la pièce la plus loin de ce point de départ, nous n'avons pas réussi. 
+
 Le but n'était simplement pas atteignable, nous avions le nom de la node dans lequel le but se trouvait, mais aucune idée d'où se trouvait la dite node, que nous n'arrivons jamais à trouver, même en explorant.
+
 Il semble donc que le but était en dehors de la partie du donjon qui était atteignable par joueur, ce qui nous a poussé à changer de bibliothèque.
 
 
