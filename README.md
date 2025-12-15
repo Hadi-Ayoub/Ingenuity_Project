@@ -85,7 +85,7 @@ Enfin Ingescape Circle ne marchait pas avec le réseau privé de l'un de nous de
 Même ainsi, ingescape.start_with_device n'arrivait pas à se connecter à l'interface utilisée par circle, ainsi on a passé directement l'adresse IP pour ingescape.start_with_ip. 
 
 
-# Remerciment
+# Remerciments
 3d-dungeon-godot-4: https://github.com/NyanPanDev/3d-dungeon-godot-4.git
 
 Qui est elle-même un Fork de https://github.com/uheartbeast/3d-dungeon
