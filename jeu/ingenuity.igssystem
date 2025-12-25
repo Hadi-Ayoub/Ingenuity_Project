@@ -577,7 +577,8 @@
                     "uuid": "7c5d478f-e154-4d9f-a2d3-6889c2c13bd5",
                     "width": 350,
                     "x": 2046.8113820145381,
-                    "y": 212.28604444744508
+                    "y": 212.28604444744508,
+                    "z": 1.310000000000001
                 },
                 {
                     "data": {
@@ -592,7 +593,8 @@
                     "uuid": "db171f92-15d6-464a-8571-ab7be424099d",
                     "width": 250,
                     "x": 1764.933891781893,
-                    "y": -18.783761593406837
+                    "y": -18.783761593406837,
+                    "z": 1.320000000000001
                 },
                 {
                     "data": {
@@ -608,7 +610,8 @@
                     "uuid": "5c644246-b816-4de3-a9b3-c99ded0feb7f",
                     "width": 250,
                     "x": 1485.436191758645,
-                    "y": -278.21595392257007
+                    "y": -278.21595392257007,
+                    "z": 1.330000000000001
                 },
                 {
                     "agent": {
@@ -630,41 +633,12 @@
                     "uuid": "caab1063-4b46-44c5-b564-cf394140fc64",
                     "width": 250,
                     "x": 1236.1175264888957,
-                    "y": -194.43370796815782
+                    "y": -194.43370796815782,
+                    "z": 1.340000000000001
                 },
                 {
                     "agent": {
                         "instances": [
-                            {
-                                "commandLine": "/usr/bin/python3.10",
-                                "hostname": "ayoub-ROG-Strix-G513QR-G513QR",
-                                "ip": "10.10.146.128",
-                                "isAttachedToCircle": false,
-                                "mac": "B4:8C:9D:36:10:77",
-                                "uuid": "b0aa20c7-085c-42bb-929f-6d27293fac63"
-                            }
-                        ]
-                    },
-                    "class": "4f9ea31d-1469-458f-bedd-6452f63720ab",
-                    "height": 188,
-                    "name": "MessageBroadcast",
-                    "simulationTime": 5000,
-                    "uuid": "47248dfd-165a-458e-aa67-1616614f398f",
-                    "width": 250,
-                    "x": 2162.4225263830103,
-                    "y": -51.415854579522176
-                },
-                {
-                    "agent": {
-                        "instances": [
-                            {
-                                "commandLine": "C:\\Users\\Mathilde\\Downloads\\Whiteboard-win64\\Whiteboard.exe",
-                                "hostname": "DESKTOP-5B0BNQS",
-                                "ip": "10.52.164.171",
-                                "isAttachedToCircle": false,
-                                "mac": "60:DD:8E:C9:18:FF",
-                                "uuid": "85cc4b40-63a9-4c11-a575-9ea43a57d909"
-                            },
                             {
                                 "commandLine": "/opt/Whiteboard/bin/Whiteboard",
                                 "hostname": "ayoub-ROG-Strix-G513QR-G513QR",
@@ -672,6 +646,14 @@
                                 "isAttachedToCircle": false,
                                 "mac": "B4:8C:9D:36:10:77",
                                 "uuid": "0b252513-6ff6-43d5-b48a-713e168c758e"
+                            },
+                            {
+                                "commandLine": "C:\\Users\\Mathilde\\Downloads\\Whiteboard-win64\\Whiteboard.exe",
+                                "hostname": "DESKTOP-5B0BNQS",
+                                "ip": "10.52.164.171",
+                                "isAttachedToCircle": false,
+                                "mac": "60:DD:8E:C9:18:FF",
+                                "uuid": "85cc4b40-63a9-4c11-a575-9ea43a57d909"
                             }
                         ]
                     },
@@ -682,7 +664,8 @@
                     "uuid": "3f3a5d31-4287-44c2-9ecb-54cddb66ca52",
                     "width": 250,
                     "x": 1854.1262014867564,
-                    "y": -282.0581811912902
+                    "y": -282.0581811912902,
+                    "z": 1.360000000000001
                 }
             ],
             "links": {

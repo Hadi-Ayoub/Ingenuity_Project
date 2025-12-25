@@ -9,8 +9,8 @@ import threading
 import signal
 
 # Valeur par défaut, sera écrasée si un argument est fourni
-TCP_HOST = "127.0.0.1" 
-TCP_PORT = 5000 
+TCP_HOST = "127.0.0.1"
+TCP_PORT = 5000
 running = True
 explored_tiles = []
 goal_reached = False
@@ -24,6 +24,8 @@ def draw_tile_on_whiteboard(x, y):
     igs.output_set_int("whiteboard_x", screen_x)
     igs.output_set_int("whiteboard_y", screen_y)
     igs.output_set_impulsion("whiteboard_impulse")
+
+
 
 def signal_handler(sig, frame):
     global running
@@ -39,7 +41,7 @@ def tcp_listening_thread(port):
 
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    
+
     try:
         server.bind((TCP_HOST, port))
         server.listen(1)
@@ -83,7 +85,7 @@ def tcp_listening_thread(port):
                     except ConnectionResetError:
                         print("Connexion réinitialisée par Godot")
                         break
-                
+
                 conn.close()
 
             except socket.timeout:
@@ -97,18 +99,20 @@ def input_callback(io_type, name, value_type, value, my_data):
     pass
 
 if __name__ == "__main__":
-    if len(sys.argv) < 4:
-        print("usage: python3 main.py agent_name network_device ingescape_port")
+    if len(sys.argv) < 3:
+        print("usage: python3 main.py network_device ingescape_port")
         exit(0)
 
-    agent_name = sys.argv[1]
-    network_device = sys.argv[2]
-    igs_port = int(sys.argv[3])
-    
+    igs.definition_set_class("MessageBroadcast")
+    agent_name = "MyAgent"
+    network_device = sys.argv[1]
+    igs_port = int(sys.argv[2])
+
 
     igs.agent_set_name(agent_name)
     igs.definition_set_class("MessageBroadcast")
     igs.log_set_console(True)
+
     igs.output_create("message_output", igs.STRING_T, None)
     igs.output_create("whiteboard_impulse", igs.IMPULSION_T, None)
     igs.output_create("whiteboard_x", igs.INTEGER_T, None)
@@ -120,7 +124,7 @@ if __name__ == "__main__":
     #igs.start_with_device(network_device, igs_port) # impossible de se connecter meme en choisant le meme non que sur circle
     # Par consequent, on utilise directement une IP
     igs.start_with_ip(network_device, igs_port)
-    
+
 
     t = threading.Thread(target=tcp_listening_thread, args=(TCP_PORT,), daemon=True)
     t.start()
